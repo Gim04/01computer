@@ -40,4 +40,8 @@ class Container extends Model
     public function cables(){
         return $this->hasMany(cable::class, 'position_id', 'id');
     }
+    public function mice(){
+        return $this->hasMany(mouse::class, 'position_id', 'id');
+    }
+
 }

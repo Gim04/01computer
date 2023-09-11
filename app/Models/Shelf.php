@@ -35,11 +35,14 @@ class Shelf extends Model
     public function cables(){
         return $this->hasMany(cable::class, 'position_id', 'id');
     }
+    public function mice(){
+        return $this->hasMany(mouse::class, 'position_id', 'id');
+    }
 
     public function containers(){
         return $this->hasMany(container::class, 'shelf_id', 'id');
     }
-    public function units(){
+    public function unities(){
         return $this->belongsTo(unity::class, 'unity_id', 'id');
     }
 }

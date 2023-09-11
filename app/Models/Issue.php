@@ -33,5 +33,9 @@ class Issue extends Model
 
     public function cables(){
         return $this->belongTo(cable::class, 'item_id', 'id');
-        }
+    }
+    
+    public function mice(){
+        return $this->belongsTo(mouse::class, 'position_id', 'id');
+    }
 }

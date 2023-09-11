@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Shelf;
 use Illuminate\Database\Seeder;
 use \Illuminate\Support\Facades\DB;
 
@@ -15,31 +16,18 @@ class ShelvesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
-        DB::table('Shelves')->delete();
-        DB::table('Shelves')->insert(array (
-            0 => 
-            array (
-                'id' => 2,
-                'unit_id' => 1,
-                'code' => '01',
-                'description' => 'keyboard jupiter',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-                'deleted_at' => NULL,
-            ),
-            1 => 
-            array (
-                'id' => 3,
-                'unit_id' => 1,
-                'code' => '02',
-                'description' => 'keyboard jupiter',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-                'deleted_at' => NULL,
-            ),
-        ));
+        $csvFile = fopen(base_path("database/data/shelves.csv"), "r");
+  
+        while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+                Shelf::create([
+                    'id' => $data['0'],
+                    'unity_id' => $data['1'],
+                    'code' => $data['2'],
+       
+                ]);    
+        }
+   
+        fclose($csvFile);
         
         
     }

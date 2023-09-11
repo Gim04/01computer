@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;  
 
 use App\Models\Shelf;
+use App\Models\Unity;
 use App\Models\Computer;
 use App\Models\Container;
 use App\Models\Manufacturer;
@@ -68,9 +69,9 @@ class ComputerController extends Controller
                         ->with('message', 'Computer created successfully.');
     }   
 
-    public function show(Computer $computer)
+    public function show(Computer $computer, Shelf $shelf, Container $container, Unity $unities)
     {
-        return view('items.computer.show',compact('computer'));
+        return view('items.computer.show',compact('computer', 'container', 'shelf', 'unities'));
     }
 
     public function edit(Computer $computer, Manufacturer $manufacturers, Container $containers, Shelf $shelves)

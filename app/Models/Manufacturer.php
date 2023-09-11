@@ -33,4 +33,7 @@ class Manufacturer extends Model
     public function monitors() {
         return $this->hasMany(monitor::class, 'manufaturer_id', 'id');
     }
+    public function mice(){
+        return $this->hasMany(mouse::class, 'position_id', 'id');
+    }
 }

@@ -26,7 +26,9 @@ return new class extends Migration
             $table->string('speed');
             $table->string('processor');
             $table->string('bit');
+            $table->boolean('keyboard_bool')->default('0');
             $table->string('keyboard');
+            $table->boolean('monitor_bool')->default('0');
             $table->string('monitor');
             $table->string('icon');
             $table->longtext('description')->nullable();

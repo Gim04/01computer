@@ -18,9 +18,7 @@ class Joystick extends Model
         'inventory_number',
         'serial_number',
         'model',
-        'year',
         'model',
-        'description',
         'icon'
     ];
     
@@ -45,5 +43,8 @@ class Joystick extends Model
 
     public function boxes(){
         return $this->hasOne(box::class, 'item_id', 'id');
+    }
+    public function computer(){
+        return $this->belongsToMany(Joystick::class, 'has', 'belong_id', 'computer_id');
     }
 }

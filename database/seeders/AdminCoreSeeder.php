@@ -54,6 +54,34 @@ class AdminCoreSeeder extends Seeder
             'computer create',
             'computer edit',
             'computer delete',
+            'joystick list',
+            'joystick create',
+            'joystick edit',
+            'joystick delete',
+            'keyboard list',
+            'keyboard create',
+            'keyboard edit',
+            'keyboard delete',
+            'monitor list',
+            'monitor create',
+            'monitor edit',
+            'monitor delete',
+            'mouse list',
+            'mouse create',
+            'mouse edit',
+            'mouse delete',
+            'peripheral list',
+            'peripheral create',
+            'peripheral edit',
+            'peripherals delete',
+            'cable list',
+            'cable create',
+            'cable edit',
+            'cable delete',
+            'terminal list',
+            'terminal create',
+            'terminal edit',
+            'terminal delete',
         ];
 
         foreach ($permissions as $permission) {
@@ -68,6 +96,13 @@ class AdminCoreSeeder extends Seeder
         $role1->givePermissionTo('menu list');
         $role1->givePermissionTo('computer list');
         $role1->givePermissionTo('menu.item list');
+        $role1->givePermissionTo('joystick list');
+        $role1->givePermissionTo('keyboard list');
+        $role1->givePermissionTo('monitor list');
+        $role1->givePermissionTo('mouse list');
+        $role1->givePermissionTo('peripheral list');
+        $role1->givePermissionTo('cable list');
+        $role1->givePermissionTo('terminal list');
 
         $role2 = Role::create(['name' => 'admin']);
         foreach ($permissions as $permission) {
@@ -81,6 +116,13 @@ class AdminCoreSeeder extends Seeder
         $user = \App\Models\User::factory()->create([
             'name' => 'Super Admin',
             'email' => 'superadmin@example.com',
+            'is_admin' => '1',
+        ]);
+        $user->assignRole($role3);
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Super Admin',
+            'email' => 'mgalea@example.com',
             'is_admin' => '1',
         ]);
         $user->assignRole($role3);

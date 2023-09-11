@@ -14,19 +14,16 @@ class Computer extends Model
     protected $fillable = [
         'position_id',
         'bool_position',
+        'manufacturer_id',
         'inventory_number',
         'serial_number',
-        'manufacturer_id',
         'model',
         'submodel',
-        'year',
-        'power_type',
-        'power_rating',
-        'speed',
         'processor',
+        'power',
+        'speed',
+        'year',
         'bit',
-        'keyboard',
-        'monitor',
         'icon',
         'description'
     ];
@@ -38,9 +35,6 @@ class Computer extends Model
     public function containers(){
         return $this->belongsTo(container::class, 'position_id', 'id');
     }
-    public function boxes(){
-        return $this->hasOne(box::class, 'item_id', 'id');
-    }
 
     public function manufacturers(){
         return $this->belongsTo(manufacturer::class, 'manufacturer_id', 'id');
@@ -48,6 +42,26 @@ class Computer extends Model
 
     public function images(){
         return $this->hasMany(issue::class, 'image_id', 'id');
+    }
+    public function terminals()
+    {
+        return $this->belongsToMany(Mouse::class, 'has', 'computer_id', 'belong_id');
+    }
+    public function mice()
+    {
+        return $this->belongsToMany(Mouse::class, 'has', 'computer_id', 'belong_id');
+    }
+    public function peripherals()
+    {
+        return $this->belongsToMany(Mouse::class, 'has', 'computer_id', 'belong_id');
+    }
+    public function joysticks()
+    {
+        return $this->belongsToMany(Mouse::class, 'has', 'computer_id', 'belong_id');
+    }
+    public function cables()
+    {
+        return $this->belongsToMany(Mouse::class, 'has', 'computer_id', 'belong_id');
     }
 
 }

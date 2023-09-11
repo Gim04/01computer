@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/gallery', function () {
+    return view('gallery');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,6 +38,11 @@ Route::group([
     Route::resource('joystick', 'JoystickController');
     Route::resource('monitor', 'MonitorController');
     Route::resource('keyboard', 'KeyboardController');
+    Route::resource('mouse', 'MouseController');
+    Route::resource('peripheral', 'PeripheralController');
+    Route::resource('terminal', 'TerminalController');
+    Route::resource('cable', 'CableController');
+    Route::resource('newsletter', 'NewsletterController');
 });
 
 require __DIR__.'/auth.php';

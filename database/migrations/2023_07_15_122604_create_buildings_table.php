@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('civic_n');
             $table->string('cap');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

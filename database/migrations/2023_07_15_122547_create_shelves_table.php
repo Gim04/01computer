@@ -10,12 +10,12 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('shelves', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('unit_id');
+            $table->foreignId('unity_id');
             $table->string('code');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

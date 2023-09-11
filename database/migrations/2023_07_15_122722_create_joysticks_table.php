@@ -18,9 +18,8 @@ return new class extends Migration
             $table->foreignId('manufacturer_id');
             $table->string('inventory_number');
             $table->string('serial_number');
-            $table->integer('year');
             $table->string('model');
-            $table->text('description');
+            $table->boolean('box');
             $table->string('icon');
             $table->timestamps();
             $table->softDeletes(); 

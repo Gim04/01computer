@@ -12,6 +12,7 @@ class Box extends Model
     protected $table = 'boxes';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'category_id',
         'item_id',
         'condition'
     ];
@@ -28,5 +29,7 @@ class Box extends Model
     public function monitors() {
         return $this->belongsTo(monitor::class, 'item_id', 'id');
     }
-
+    public function categories(){
+        return $this->belongsTo(category::class, 'category_id', 'id');
+    }
 }

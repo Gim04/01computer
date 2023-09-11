@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('boxes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
             $table->foreignId('item_id');
             $table->string('condition');
             $table->timestamps();

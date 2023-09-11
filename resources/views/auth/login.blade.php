@@ -1,5 +1,7 @@
 <x-guest-layout>
-    <x-auth-card>
+</div>
+<div class="over" style=" z-index:999; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position: relative; top:-600px;">
+<div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
@@ -53,5 +55,6 @@
                 </x-primary-button>
             </div>
         </form>
-    </x-auth-card>
+</div>
+</div>
 </x-guest-layout>

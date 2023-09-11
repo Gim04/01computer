@@ -20,5 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(MonitorsTableSeeder::class);
         $this->call(KeyboardsTableSeeder::class);
         $this->call(JoysticksTableSeeder::class);
+        $this->call(BuildingsTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
+        $this->call(UnitiesTableSeeder::class);
+        $this->call(ZonesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ImagesTableSeeder::class);
     }
 }

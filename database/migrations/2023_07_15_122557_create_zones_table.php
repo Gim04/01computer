@@ -10,13 +10,13 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->foreignId('building_id');
             $table->string('denomination');
             $table->string('floor');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
             $table->foreignId('item_id');
             $table->date('start_date');
             $table->boolean('solved');

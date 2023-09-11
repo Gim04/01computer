@@ -3,6 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Manufacturer;
+use App\Models\Computer;
+use App\Models\Keyboard;
+use App\Models\Monitor;
+use App\Models\Joystick;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreManufacturerRequest;
 use App\Http\Requests\Admin\UpdateManufacturerRequest;
@@ -17,9 +21,11 @@ class ManufacturerController extends Controller
         $this->middleware('can:manufacturer delete', ['only' => ['destroy']]);
     }
 
-    public function index(Manufacturer $manufacturers, Country $country)
+    public function index(Manufacturer $manufacturers, Monitor $monitors, Joystick $joysticks)
     {
         $manufacturers = (new Manufacturer)->newQuery();
+        $computers = (new Computer)->newQuery(); 
+        $keyboards = (new Keyboard)->newQuery(); 
 
         if (request()->has('search')) {
             $manufacturers->where('model', 'Like', '%'.request()->input('search').'%');
@@ -39,10 +45,10 @@ class ManufacturerController extends Controller
 
         $manufacturers = $manufacturers->paginate(5);
 
-        return view('manufacturer.index', compact('manufacturers', 'country'));
+        return view('items.manufacturer.index', compact('manufacturers','computers','keyboards'));
     }   
     
-    public function create(Manufacturer $manufacturers, Country $country)
+    public function create(Manufacturer $manufacturers, )
     {
         $position = ['Shelf', 'Container'];
         return view('manufacturer.create', compact('manufacturers', 'country'));
@@ -58,7 +64,9 @@ class ManufacturerController extends Controller
 
     public function show(Manufacturer $manufacturer)
     {
-        return view('manufacturer.show',compact('manufacturer'));
+        $computers = (new Computer)->newQuery(); 
+        $keyboards = (new Keyboard)->newQuery(); 
+        return view('items.manufacturer.show',compact('manufacturer','computers','keyboards'));
     }
 
     public function edit(Manufacturer $manufacturer, Country $country)

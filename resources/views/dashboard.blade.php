@@ -1,33 +1,76 @@
 @if (auth()->user()->is_admin)
-    <x-app-layout>
-        <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </h2>
-        </x-slot>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+    
+    <script src="{{ asset('js/visitor-counter.js') }}"></script>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        You're logged in!
-                    </div>
-                </div>
-            </div>
+    
+
+   <div class="divc"> 
+    <div class="cardblue">
+        <div class="card-border-top">
         </div>
-    </x-app-layout>
+        <span class="span"> <h1>Home Views</h1></span>
+        <br>
+        <p class="text"> Views: {{ $viewCount }}</p>
+        <p class="text">Daily Views: {{ $viewsPerDay }}</p>
+        <p class="text">Monthly Views: {{ $viewsPerMonth }}</p>
+        <p class="text">Annual Views: {{ $viewsPerYear }}</p>
+
+        
+    </div>
+
+      <div class="cardgreen">
+        <div class="card-border-top">
+        </div>
+        <span class="span"> <h1>Number of computers</h1></span>
+        <br>
+        <p class="text"> Computers: {{ $computerCount }}</p>
+      </div>
+
+      <div class="cardyellow">
+        <div class="card-border-top">
+        </div>
+        <span class="span"> <h1>Number of Keyboards</h1></span>
+        <br>
+        <p class="text"> Keyboards: {{ $keyboardCount }}</p>
+      </div>
+
+      <div class="cardorange">
+        <div class="card-border-top">
+        </div>
+        <span class="span"> <h1>Number of Monitors</h1></span>
+        <br>
+        <p class="text"> Monitors: {{ $monitorCount }}</p>
+      </div>
+      
+      <div class="cardred">
+        <div class="card-border-top">
+        </div>
+        <span class="span"> <h1>Number of Cables</h1></span>
+        <br>
+        <p class="text"> Cables: {{ $cableCount }}</p>
+      </div>
+
+   </div>
+</x-app-layout>
 @else
-@include('layouts.app')
+<x-app-layout>
     <div class="cta-45">
-        <h1>Timeline</h1>
+        <h1 style="font-family:monoton;
+font-size: 70px;">Timeline</h1>
 
         <div id="toggle-button" class="toggle-button">
         <span>&#8645;</span>
         </div>
 
         <div id="navigation" class="navigation">
-        <button class="arrow arrow-left">&lt;</button>
-        <button class="arrow arrow-right">&gt;</button>
+        <button class="arrow arrow-left" id="left">&lt;</button>
+        <button class="arrow arrow-right" id="right">&gt;</button>
         </div>
         
         <div class="timeline-container">
@@ -63,116 +106,41 @@
         />
         </div>
     </div>
-    <div class="footer-10">
-        <div class="card1">
-        <div class="links">
-            <div class="column5">
-            <img class="logo-icon" alt="" src="{{ asset('photo/public/logo1.svg') }}" />
-            </div>
-            <div class="column6">
-            <div class="page-one">Column One</div>
-            <div class="footer-links">
-                <div class="link4">
-                <div class="placeholder">Link One</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Two</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Three</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Four</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Five</div>
-                </div>
-            </div>
-            </div>
-            <div class="column6">
-            <div class="page-one">Column Two</div>
-            <div class="footer-links">
-                <div class="link4">
-                <div class="placeholder">Link Six</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Seven</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Eight</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Nine</div>
-                </div>
-                <div class="link4">
-                <div class="placeholder">Link Ten</div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="newslatter">
-            <div class="heading-parent">
-            <div class="page-one">Subscribe</div>
-            <div class="text">
-                Join our newsletter to stay up to date on features and releases.
-            </div>
-            </div>
-            <div class="actions2">
-            <div class="form">
-                <div class="text-input">
-                <div class="placeholder">Enter your email</div>
-                </div>
-                <div class="button10">
-                <div class="link">Subscribe</div>
-                </div>
-            </div>
-            <div class="text4">
-                By subscribing you agree to with our
-                <span class="privacy-policy">Privacy Policy</span> and provide
-                consent to receive updates from our company.
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="footer-links">
-        <div class="row">
-            <div class="credits1">
-            <div class="link">© 2023 Relume. All rights reserved.</div>
-            <div class="footer-links3">
-                <div class="link34">Privacy Policy</div>
-                <div class="link34">Terms of Service</div>
-                <div class="link34">Cookies Settings</div>
-            </div>
-            </div>
-            <div class="social-links">
-            <img
-                class="chevron-down-icon"
-                alt=""
-                src="{{ asset('photo/public/icon--facebook.svg') }}"
-            />
-
-            <img
-                class="chevron-down-icon"
-                alt=""
-                src="{{ asset('photo/public/icon--instagram.svg') }}"
-            />
-
-            <img
-                class="chevron-down-icon"
-                alt=""
-                src="{{ asset('photo/public/icon--twitter.svg') }}"
-            />
-
-            <img
-                class="chevron-down-icon"
-                alt=""
-                src="{{ asset('photo/public/icon--linkedin.svg') }}"
-            />
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
+    <style>
+        .computers-left .image-preview {
+            height: 150px;
+width: 200px;
+        }
+        .computers-right .image-preview {
+            height: 150px;
+width: 200px;
+left: -250px
+        }
+          .computers-above .image-preview{
+            left: 90px;
+            position: relative;
+            top: 70px;
+          }
+          .computers-below .image-preview{
+            left: 90px;
+            position: relative;
+            top: -120px;
+          }
+.image-preview {
+    max-width: 200px;
+}
+.image-preview img {
+    position: absolute;
+}
+@media (max-width: 522px){
+    .timeline-event-content {
+    width: 30vw;
+  }
+  .computers-left .timeline-event-content, .computers-left .timeline-event-date,{
+    left: -10vw;
+  }
+}
+    </style>
     <script type = "text/javascript">
 
         @php
@@ -187,7 +155,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         
-        $sql = "SELECT c.id, c.year, c.model, c.submodel FROM computers c INNER JOIN ( SELECT MIN(id) as id, year FROM computers GROUP BY year) min_computers ON c.id = min_computers.id ORDER BY c.year ASC";
+        $sql = "SELECT c.id, c.year, c.model, c.submodel, c.icon FROM computers c INNER JOIN ( SELECT MIN(id) as id, year FROM computers GROUP BY year) min_computers ON c.id = min_computers.id ORDER BY c.year ASC";
         $result = $conn->query($sql);
 
         $computers = array();
@@ -244,7 +212,7 @@
 
             if (isHorizontalLayout) {
                 let totalHeight = '600';
-                const height = '2460';
+                let height = '2460';
                 document.querySelector('.home').style.height = `${height}px`
                 document.querySelector('.cta-45').style.height = `${totalHeight}px`;
 
@@ -254,6 +222,10 @@
                 }
                 if (window.matchMedia("(max-width: 1200px)").matches) {
                 maxVisibleComputers = 4;
+                }
+                if (window.matchMedia("(max-width: 920px)").matches) {
+                    height = '2000';
+                document.querySelector('.home').style.height = `${height}px`
                 }
                 const visibleComputers = computers.slice(currentIndex, currentIndex + maxVisibleComputers);
                 const oldestDate = new Date(visibleComputers[0].year);
@@ -298,7 +270,7 @@
 
                     const imagePreview = document.createElement('div');
                     imagePreview.classList.add('image-preview');
-                    imagePreview.innerHTML = `<img src="${computer.icon}" alt="Computer Image">`;
+                    imagePreview.innerHTML = `<img src="{{ asset('${computer.icon}') }}" alt="Computer Image">`;
                     imagePreview.style.display = 'none';
 
                     eventDiv.appendChild(imagePreview);
@@ -363,7 +335,7 @@
 
                 const imagePreview = document.createElement('div');
                 imagePreview.classList.add('image-preview');
-                imagePreview.innerHTML = `<img src="${computer.icon}" alt="Computer Image">`;
+                imagePreview.innerHTML = `<img src="{{ asset('${computer.icon}') }}" alt="Computer Image">`;
                 imagePreview.style.display = 'none';
 
                 eventDiv.appendChild(imagePreview);
@@ -420,6 +392,6 @@
         window.addEventListener("resize", displayComputers());
         })
     </script>
-</body>
-</html>
+
+    </x-app-layout>
 @endif

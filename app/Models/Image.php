@@ -31,4 +31,7 @@ class Image extends Model
     public function cables(){
         return $this->belongsTo(cable::class, 'item_id', 'id');
     }
+    public function mice(){
+        return $this->belongsTo(mouse::class, 'position_id', 'id');
+    }
 }

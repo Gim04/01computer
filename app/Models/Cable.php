@@ -37,4 +37,7 @@ class Cable extends Model
     public function issues(){
         return $this->hasMany(issue::class, 'issue_id', 'id');
     }
+    public function computer(){
+        return $this->belongsToMany(Cable::class, 'has', 'belong_id', 'computer_id');
+    }
 }

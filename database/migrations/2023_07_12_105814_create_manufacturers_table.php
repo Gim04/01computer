@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('manufacturers', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->foreignId('country_id');
             $table->string('name');
-            $table->string('link');
-            $table->text('description');
+            $table->string('link')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
